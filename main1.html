@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSC NASTP - Space Sustainability Centre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark-blue: #0b1a3d;
+      --green: #1e9650;
+      --green-dark: #0e4d2c;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--dark-blue);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--dark-blue);
+      padding: 15px;
+      border-bottom: 2px solid var(--green);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    header img {
+      height: 50px;
+      width: auto;
+    }
+
+    .site-header-title {
+      font-size: 1.3rem;
+      color: var(--white);
+      letter-spacing: 1.2px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #112b4d;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--green);
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      background: linear-gradient(to bottom, rgba(11, 26, 61, 0.6), rgba(11, 26, 61, 0.6)),
+        url('2.gif') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      padding-bottom: 120px;
+    }
+
+    .hero-logo-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .hero-logo-title img {
+      height: 70px;
+      width: auto;
+    }
+
+    .hero-logo-title h2 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--white);
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 700px;
+      margin: 20px auto;
+      color: var(--white);
+      line-height: 1.5;
+    }
+
+    .hero button {
+      background: transparent;
+      border: 2px solid var(--green);
+      color: var(--green);
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.3s;
+      margin-top: 20px;
+    }    
+
+    .hero button:hover {
+      background-color: var(--green);
+      color: var(--dark-blue);
+    }
+
+    /* Wave Animation */
+    .wave-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .wave-container svg {
+      display: block;
+      width: 200%;
+      height: 120px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .wave-front {
+      animation: waveBack 6s linear infinite;
+      transform: translateY(-10px);
+      z-index: 1;
+    }
+
+    .wave-front path {
+      fill: var(--green-dark);
+    }
+
+    .wave-back {
+      animation: waveFront 4s linear infinite;
+      transform: translateY(-10px);
+      z-index: 2;
+      opacity: 0.9;
+    }
+
+    .wave-back path {
+      fill: var(--green);
+    }
+
+    @keyframes waveBack {
+      0% { transform: translateX(0) translateY(-10px); }
+      100% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    @keyframes waveFront {
+      0% { transform: translateX(0) translateY(15px); }
+      100% { transform: translateX(-25%) translateY(15px); }
+    }
+
+    /* Video Section */
+    #video-section {
+      padding: 50px 20px;
+      background-color: var(--dark-blue);
+      text-align: center;
+    }
+
+    #video-section h2 {
+      color: var(--green);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 20px;
+    }
+
+    #video-section video {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    #video-section p {
+      margin-top: 15px;
+      color: #ccc;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #112b4d;
+      text-align: center;
+      padding: 20px;
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 500px) {
+      nav a {
+        margin: 8px;
+        font-size: 0.9rem;
+      }
+      header img {
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="Logo">
+    <h1 class="site-header-title">Space Sustainability Centre – NASTP Alpha Rawalpindi</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="main1.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="teams.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-logo-title">
+      <img src="alpha-logo.gif" alt="SSC Logo" />
+      <h2>Pioneering Space Sustainability</h2>
+    </div>
+    <p>Explore advanced solutions in Remote Sensing, GIS, Drone Mapping, 3D Modeling, and more.</p>
+    <button onclick="document.getElementById('video-section').scrollIntoView({behavior:'smooth'});">Explore More</button>
+
+    <!-- Waves -->
+    <div class="wave-container">
+      <svg class="wave-back" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,40 C400,100 800,0 1200,40 L1200,120 L0,120 Z"></path>
+      </svg>
+      <svg class="wave-front" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,40 C400,100 800,0 1200,40 L1200,120 L0,120 Z"></path>
+      </svg>
+    </div>
+  </section>  
+
+  <!-- Video Section -->
+  <section id="video-section">
+    <h2>Experience Our Work</h2> 
+    <video controls>
+      <source src="NASTP Video (3).mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p>Discover how SSC NASTP is leading innovation in space sustainability.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+  &copy; 2025 SSC – NASTP Rawalpindi. All rights reserved.
+  <div class="page-view-counter">
+    <p id="page-views"></p>
+  </div>
+</footer>
+
+<!-- Page View Counter Script -->
+<script src="pageviews.js"></script>
+
+<style>
+  footer {
+    background: rgba(17, 43, 77, 0.9);
+    text-align: center;
+    padding: 20px;
+    color: white;
+    margin-top: 40px;
+    position: relative;
+  }
+  .page-view-counter {
+      margin-top: -18px;
+    text-align: right;
+    font-size: 0.7rem;
+    color: #9fe29f;
+    font-weight: 603;}
+</style>
+
+
+</body>
+</html>

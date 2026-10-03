@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - SSC NASTP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark-blue: #0b1a3d;
+      --green: #1e9650;
+      --green-dark: #0e4d2c;
+      --white: #ffffff;
+      --box-background: #e8f5e9;
+      --box-shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--dark-blue);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--dark-blue);
+      padding: 15px;
+      border-bottom: 2px solid var(--green);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    header img {
+      height: 50px;
+      width: auto;
+    }
+
+    .site-header-title {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--white);
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #112b4d;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--green);
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      background: linear-gradient(to bottom, rgba(11, 26, 61, 0.6), rgba(11, 26, 61, 0.6)),
+        url('2.gif') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      padding-bottom: 120px;
+      overflow: hidden;
+    }
+
+    .hero .hero-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero .hero-header img {
+      height: clamp(60px, 10vw, 100px);
+    }
+
+    .hero h2 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--white);
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    /* Updated Read More / Explore Us Button */
+    .read-more-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 24px;
+      background-color: transparent;
+      border: 2px solid var(--green);
+      color: var(--green);
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+
+    .read-more-btn:hover {
+      background-color: var(--green);
+      color: var(--white);
+    }
+
+    /* Wave Animation */
+    .wave-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .wave-container svg {
+      display: block;
+      width: 200%;
+      height: 120px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .wave-front {
+      animation: waveBack 6s linear infinite;
+      transform: translateY(-10px);
+      z-index: 1;
+    }
+
+    .wave-front path {
+      fill: var(--green-dark);
+    }
+
+    .wave-back {
+      animation: waveFront 4s linear infinite;
+      transform: translateY(-10px);
+      z-index: 2;
+      opacity: 0.9;
+    }
+
+    .wave-back path {
+      fill: var(--green);
+    }
+
+    @keyframes waveBack {
+      0% { transform: translateX(0) translateY(-10px); }
+      100% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    @keyframes waveFront {
+      0% { transform: translateX(0) translateY(15px); }
+      100% { transform: translateX(-25%) translateY(15px); }
+    }
+
+    /* About Section */
+    .about-content {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 40px 20px;
+      text-align: center;
+      background-color: var(--white);
+      color: #333;
+      border-radius: 10px;
+    }
+
+    .about-content h3 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    /* Mission & Vision */
+    .mission-vision-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .mission-vision-box {
+      background-color: var(--box-background);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 4px 8px var(--box-shadow);
+      max-width: 450px;
+      flex: 1 1 300px;
+      border-left: 5px solid var(--green);
+    }
+
+    .heading-line {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .heading-line::before {
+      content: "★";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--green);
+      color: var(--white);
+      padding: 5px 8px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+    }
+
+    .mission-vision-box h3 {
+      font-size: 1.2rem;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+
+    .mission-vision-box p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #112b4d;
+      text-align: center;
+      padding: 20px;
+      color: var(--white);
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="Logo">
+    <h1 class="site-header-title">Space Sustainability Centre – NASTP Alpha Rawalpindi</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="main1.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="teams.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-header">
+      <img src="alpha-logo.gif" alt="SSC Logo">
+      <h2>About SSC NASTP</h2>
+    </div>
+    <p>Empowering space sustainability through technology, research, and innovation.</p>
+    <a href="#who-we-are" class="read-more-btn">Read More</a>
+
+    <div class="wave-container">
+      <svg class="wave-back" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,40 C400,100 800,0 1200,40 L1200,120 L0,120 Z"></path>
+      </svg>
+      <svg class="wave-front" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,40 C400,100 800,0 1200,40 L1200,120 L0,120 Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="about-content" id="who-we-are">
+    <h3>Who We Are</h3>
+    <p>
+      The Space Sustainability Centre (SSC) is a specialized initiative under NASTP Rawalpindi, committed to space technology excellence, environmental monitoring, and national resilience. SSC integrates modern tools like satellite imagery, remote sensing, and drone-based mapping to support planning, climate action, urban analytics, and disaster response.
+    </p>
+
+    <div class="mission-vision-container">
+      <div class="mission-vision-box">
+        <div class="heading-line">OUR OBJECTIVES</div>
+        <h3>LEADING SPACE TECHNOLOGY IN PAKISTAN</h3>
+        <p>
+          ● Strengthen space sustainability initiatives.<br>
+          ● Empower research in geospatial sciences.<br>
+          ● Bridge academia, startups, and policy through training & data services.<br>
+          ● Support national priorities through space-based solutions.
+        </p>
+      </div>
+
+      <div class="mission-vision-box">
+        <div class="heading-line">CORE FUNCTIONS</div>
+        <h3>TECHNOLOGY, TRAINING & IMPACT</h3>
+        <p>
+          SSC provides high-quality GIS mapping, terrain modeling, drone surveys, satellite data processing, and workshops. It offers hands-on labs, R&D collaboration opportunities, and consultative services to boost technological independence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+<footer>
+  &copy; 2025 SSC – NASTP Rawalpindi. All rights reserved.
+  <div class="page-view-counter">
+    <p id="page-views"></p>
+  </div>
+</footer>
+
+<!-- Page View Counter Script -->
+<script src="pageviews.js"></script>
+
+<style>
+  footer {
+    background: rgba(17, 43, 77, 0.9);
+    text-align: center;
+    padding: 20px;
+    color: white;
+    margin-top: 40px;
+    position: relative;
+  }
+ .page-view-counter {
+      margin-top: -18px;
+    text-align: right;
+    font-size: 0.7rem;
+    color: #9fe29f;
+    font-weight: 600;}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – SSC NASTP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --dark-blue: #0b1a3d;
+      --green: #1e9650;
+      --green-dark: #0e4d2c;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: url('2.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--white);
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(11, 26, 61, 0.88);
+      z-index: -1;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 15px 20px;
+      border-bottom: 2px solid var(--green);
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    header img {
+      height: 50px;
+      background: transparent;
+      border-radius: 8px;
+    }
+
+    header h1 {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(17, 43, 77, 0.9);
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 4px;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--green);
+      transition: 0.3s;
+    }
+
+    nav a:hover::after { width: 100%; }
+
+    /* Contact Section */
+    .contact-section {
+      max-width: 800px;
+      margin: 60px auto;
+      background-color: rgba(255, 255, 255, 0.07);
+      padding: 40px;
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .section-heading img {
+      height: clamp(40px, 6vw, 50px);
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      text-transform: uppercase;
+      color: #effff6;
+    }
+
+    .contact-info p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin: 12px 0;
+      text-align: center;
+    }
+
+    .contact-info strong {
+      color: var(--green);
+    }
+
+    /* Wave Animation */
+    .wave-container {
+      position: relative;
+      height: 100px;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+
+    .wave-container svg {
+      display: block;
+      position: absolute;
+      width: 200%;
+      height: 100px;
+      bottom: 0;
+    }
+
+    .wave-back {
+      animation: waveBack 5s linear infinite;
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    .wave-front {
+      animation: waveFront 6s linear infinite;
+      z-index: 2;
+    }
+
+    .wave-back path { fill: var(--green); }
+    .wave-front path { fill: var(--green-dark); }
+
+    @keyframes waveBack {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes waveFront {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-25%); }
+    }
+
+    /* Footer */
+    footer {
+      background-color: rgba(17, 43, 77, 0.9);
+      text-align: center;
+      padding: 20px;
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+      .contact-section { padding: 25px; margin: 40px 15px; }
+    }
+
+    @media (max-width: 480px) {
+      .contact-info p { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="Logo">
+    <h1>Space Sustainability Centre – NASTP Alpha Rawalpindi</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="main1.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="teams.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="section-heading">
+      <img src="alpha-logo.gif" alt="Logo">
+      <h2>Contact Us</h2>
+    </div>
+
+    <div class="contact-info">
+      <p><strong>Name:</strong> M Azhar Latif</p>
+      <p><strong>Position:</strong> Senior Manager, SSC</p>
+      <p><strong>Office:</strong> 051-9529645</p>
+      <p><strong>Cell:</strong> 0323-9232998</p>
+      <p><strong>Email:</strong> info.sismpk@gmail.com</p>
+      <p><strong>Alternate Email:</strong> info.space@nastp.gov.pk</p>
+    </div>
+  </section>
+
+  <!-- Wave Animation -->
+  <div class="wave-container">
+    <svg class="wave-back" viewBox="0 0 1200 100" preserveAspectRatio="none">
+      <path d="M0,30 C300,90 900,0 1200,30 L1200,100 L0,100 Z"></path>
+    </svg>
+    <svg class="wave-front" viewBox="0 0 1200 100" preserveAspectRatio="none">
+      <path d="M0,40 C400,100 800,0 1200,40 L1200,100 L0,100 Z"></path>
+    </svg>
+  </div>
+
+  <!-- Footer -->
+  
+<footer>
+  &copy; 2025 SSC – NASTP Rawalpindi. All rights reserved.
+  <div class="page-view-counter">
+    <p id="page-views"></p>
+  </div>
+</footer>
+
+<!-- Page View Counter Script -->
+<script src="pageviews.js"></script>
+
+<style>
+  footer {
+    background: rgba(17, 43, 77, 0.9);
+    text-align: center;
+    padding: 20px;
+    color: white;
+    margin-top: 40px;
+    position: relative;
+  }
+ .page-view-counter {
+      margin-top: -18px;
+    text-align: right;
+    font-size: 0.7rem;
+    color: #9fe29f;
+    font-weight: 600;
+  }
+</style>
+
+</body>
+</html>

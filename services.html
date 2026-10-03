@@ -1,0 +1,351 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services – SSC NASTP</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <!-- Geosearch CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.8.0/dist/geosearch.css"/>
+
+  <style>
+    :root {
+      --dark-blue: #0b1a3d;
+      --green: #1e9650;
+      --white: #ffffff;
+      --light-bg: #e8f5e9;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: url('2.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--white);
+      margin: 0;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-color: rgba(11, 26, 61, 0.85);
+      z-index: -1;
+    }
+
+    header {
+      padding: 15px 20px;
+      border-bottom: 2px solid var(--green);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    header img { height: 50px; }
+    .site-header-title {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(17, 43, 77, 0.95);
+      padding: 12px;
+      position: sticky;   /* keeps nav bar in view */
+      top: 0;             /* sticks to top */
+      z-index: 1000;      /* stays above other content */
+    }
+    nav a {
+      color: white;
+      margin: 0 14px;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0%; height: 2px;
+      background: var(--green);
+      transition: 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    .services-section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .services-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    .services-title img.services-logo { width: 50px; height: auto; }
+    .services-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .service-card {
+      background: var(--light-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      color: #222;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card:hover { transform: translateY(-6px); }
+    .service-card img { width: 100%; height: 180px; object-fit: cover; }
+    .service-card .content { padding: 20px; }
+
+    .map-card {
+      background: var(--light-bg);
+      border-radius: 12px;
+      padding: 20px;
+      color: black;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      margin-top: 40px;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    .tabs button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      background: #ddd;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .tabs button.active {
+      background: var(--green);
+      color: white;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .map-frame, #leaflet-map {
+      width: 100%;
+      height: 600px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    footer {
+      background: rgba(17, 43, 77, 0.9);
+      text-align: center;
+      padding: 20px;
+      color: white;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .page-view-counter {
+      position: absolute;
+      bottom: 5px;
+      right: 15px;
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Logo">
+  <h1 class="site-header-title">Space Sustainability Centre – NASTP Alpha Rawalpindi</h1>
+</header>
+
+<nav>
+  <a href="main1.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="teams.html">Team</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- Rest of your code stays exactly the same -->
+
+<section class="services-section">
+  <div class="services-title">
+    <img src="alpha-logo.gif" alt="Alpha Logo" class="services-logo">
+    <h2>Our Services</h2>
+  </div>
+
+  <div class="services-container">
+    <div class="service-card">
+      <img src="5.jfif" alt="Aerial Drone Mapping">
+      <div class="content">
+        <h3>Aerial / Drone Mapping</h3>
+        <p>High-resolution aerial mapping using drones, ensuring centimeter-level precision.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="8.jfif" alt="Ground Survey">
+      <div class="content">
+        <h3>Ground Surveys</h3>
+        <p>Accurate ground control point collection and topographic surveys with GNSS tools.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="9.jfif" alt="Satellite Imagery">
+      <div class="content">
+        <h3>Satellite Imagery</h3>
+        <p>Multi-resolution satellite imagery for infrastructure monitoring and land classification.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="11.jfif" alt="GIS Consultancy">
+      <div class="content">
+        <h3>GIS Consultancy</h3>
+        <p>Smart city planning and environmental analysis with tailored GIS consulting.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="12.png" alt="GIS Digitization">
+      <div class="content">
+        <h3>GIS Digitization</h3>
+        <p>Digitization of paper maps and raw spatial data into structured GIS formats.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="13.webp" alt="Weather Imagery">
+      <div class="content">
+        <h3>Weather Imagery</h3>
+        <p>Live visualization of temperature, wind, and rainfall with real-time updates.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-card">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="weather">Weather Imagery</button>
+      <button class="tab-btn" data-tab="satellite">Satellite Imagery</button>
+      <button class="tab-btn" data-tab="disaster">DisasterWatch</button>
+    </div>
+
+    <!-- Weather tab -->
+    <div id="weather" class="tab-content active">
+      <iframe 
+        class="map-frame" 
+        src="https://embed.windy.com/embed2.html?lat=33.589&lon=73.049&zoom=14&level=surface&overlay=wind&menu=&message=true&marker=true&calendar=now&pressure=true&type=map&location=coordinates&detail=true&detailLat=33.589&detailLon=73.049&metricWind=default&metricTemp=default&radarRange=-1" 
+        scrolling="yes">
+      </iframe>
+    </div>
+
+    <!-- Satellite tab -->
+    <div id="satellite" class="tab-content">
+      <div id="leaflet-map"></div>
+    </div>
+
+    <!-- Disaster tab -->
+    <div id="disaster" class="tab-content">
+      <iframe 
+        class="map-frame" 
+        src="http://disasterwatch.sgs-suparco.gov.pk/?map=cyclone" 
+        scrolling="yes">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 SSC – NASTP Rawalpindi. All rights reserved.
+  <div class="page-view-counter">
+    <p id="page-views"></p>
+  </div>
+</footer>
+
+<!-- Page View Counter Script -->
+<script src="pageviews.js"></script>
+
+<style>
+  footer {
+    background: rgba(17, 43, 77, 0.9);
+    text-align: center;
+    padding: 20px;
+    color: white;
+    margin-top: 40px;
+    position: relative;
+  }
+  .page-view-counter {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #9fe29f;
+    font-weight: 600;
+  }
+</style>
+
+<!-- JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-geosearch@3.8.0/dist/bundle.min.js"></script>
+<script>
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Lazy-load Satellite map
+  let mapInitialized = false;
+  document.querySelector('[data-tab="satellite"]').addEventListener('click', () => {
+    if (!mapInitialized) {
+      var map = L.map('leaflet-map').setView([30.543, 68.994], 5);
+
+      var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+        attribution: 'OSM', maxZoom: 19 
+      });
+
+      var esriSat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Esri, Maxar', maxZoom: 18
+      });
+
+      osm.addTo(map);
+      L.control.layers({ "OpenStreetMap": osm, "Satellite (Esri)": esriSat }).addTo(map);
+
+      // Search control
+      const provider = new window.GeoSearch.OpenStreetMapProvider();
+      const search = new window.GeoSearch.GeoSearchControl({ provider: provider, style: 'bar' });
+      map.addControl(search);
+
+      mapInitialized = true;
+    }
+  });
+
+  // Page Views
+  if (localStorage.pageViews) {
+    localStorage.pageViews = Number(localStorage.pageViews) + 1;
+  } else {
+    localStorage.pageViews = 1;
+  }
+  document.getElementById("page-views").innerText = "Page Views: " + localStorage.pageViews;
+</script>
+</body>
+</html>
